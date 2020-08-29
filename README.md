@@ -17,9 +17,10 @@ Other useful guides: [Repo Maintainers Guide](.guides/repo-maintainers.md)
 *Cohort 1 - {DAY, TIME} - facilitated by {FACILITATOR_NAME}
 
 {NEXT THREE MEETINGS}
-2020-08-12: Intro/Goals Overview
-2020-08-19: Chapter 1 (or whichever is the first logical, non-introduction chapter
-2020-08-26: Chapter 2
+
+- 2020-08-12: Intro/Goals Overview
+- 2020-08-19: Chapter 1 (or whichever is the first logical, non-introduction chapter
+- 2020-08-26: Chapter 2
 
 <details>
   <summary> Future Meetings </summary>
