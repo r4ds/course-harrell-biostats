@@ -14,7 +14,7 @@ Other useful guides: [Repo Maintainers Guide](.guides/repo-maintainers.md)
 
 ### Meeting Schedule 
 
-*Cohort 1 - {DAY, TIME} - facilitated by {FACILITATOR_NAME}
+*Cohort 1 - {DAY, TIME} - facilitated by {FACILITATOR_NAME} [Asmae?]
 
 {NEXT THREE MEETINGS}
 
