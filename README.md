@@ -1,4 +1,4 @@
-# R4DS [Harrell Biostats](http://hbiostat.org/doc/bbr.pdf) Course/BookClub
+# R4DS [Harrell Biostats](http://hbiostat.org/bbr) Course/BookClub
 
 A weekly reading group following the course materials of Biostatistics for Biomedical Research by Frank Harrell & James Slaughter.
 
