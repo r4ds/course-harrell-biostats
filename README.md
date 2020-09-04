@@ -1,8 +1,8 @@
-# R4DS [{BOOK_NICKNAME}]({BOOK_URL}) Book Club
+# R4DS [Harrell Biostats](http://hbiostat.org/doc/bbr.pdf) Course/BookClub
 
-A weekly reading group following the chapters of {BOOK_FULL_NAME} by {BOOK_AUTHORS}
+A weekly reading group following the course materials of Biostatistics for Biomedical Research by Frank Harrell & James Slaughter.
 
-Visit the [{BOOK_SLACK_CHANNEL} channel](https://r4ds.io/join) on Slack to join the video chat! 
+Visit the [#course-harrell-biostats channel](https://r4ds.io/join) on Slack to join the video chat! 
 
 This repo contains 3 main folders:
 
@@ -14,18 +14,24 @@ Other useful guides: [Repo Maintainers Guide](.guides/repo-maintainers.md)
 
 ### Meeting Schedule 
 
-*Cohort 1 - {DAY, TIME} - facilitated by {FACILITATOR_NAME} [Asmae?]
+*Cohort 1 - Thursdays, 8:30 PM ET - facilitated by Asmae Toumi*
 
-{NEXT THREE MEETINGS}
-
-- 2020-08-12: Intro/Goals Overview
-- 2020-08-19: Chapter 1 (or whichever is the first logical, non-introduction chapter
-- 2020-08-26: Chapter 2
+- 2020-09-03: Chapter 2 - Algebra Review - [Adam Sonty]()
+- 2020-09-10: Chapter 3 - Overview of Biostatistics: 
+- 2020-09-17: Chapter 4 - Descriptive Statistics:
+- 2020-09-24: Chapter 5 - Statistical Inference:
 
 <details>
   <summary> Future Meetings </summary>
 
-{ALL THE REST OF THE CHAPTERS OF THE BOOK}
+- 2020-10-01: Chapter 6 - Comparing two proportions
+- 2020-10-08: Chapter 7 - Nonparametric statistical tests
+- 2020-10-15: Chapter 8 - Correlation
+- 2020-10-22: Chapter 9 - Intro to the Rrms Package
+- 2020-10-29: Chapter 10 -
+- 2020-11-05: Chapter 11 -
+- 2020-11-12: Chapter 12 -
+- 2020-11-19: Chapter 13 -
 
 </details>
 <hr>
@@ -33,12 +39,6 @@ Other useful guides: [Repo Maintainers Guide](.guides/repo-maintainers.md)
 
 ### Presentations & Recordings
 
-Introduction/Chapter 1:
+Introduction/Chapter 2 Algebra Review:
 
-- Presenter: VIDEO | SLIDES
-
-Chapter 2 Data visualisation 
-
-- Presenter: VIDEO | SLIDES
-
-
+- Adam Sonty: VIDEO | SLIDES
