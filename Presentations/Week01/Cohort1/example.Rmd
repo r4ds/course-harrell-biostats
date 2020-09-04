@@ -1,0 +1,6 @@
+---
+title: "Git Demo"
+author: Tan
+date: "`r Sys.Date()`"
+output: html_notebook
+---
