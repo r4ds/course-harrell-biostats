@@ -1,0 +1,236 @@
+---
+title: "BBRcourse"
+subtitle: "Chapter 3.9: Probability"
+author: "Erick Knackstedt"
+institute: "@Eknackstedt"
+date: " `r Sys.Date()` "
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css","custom.css"]
+    includes:
+      after_body: insert-logo.html
+---
+
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+library(tidyverse)
+library(kableExtra)
+style_mono_light(
+  base_color = "#3092FF",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google = google_font("Montserrat", "300", "300i"),
+  code_font_google = google_font("Droid Mono"),
+)
+```
+
+
+# Outline
+
+--
+
+- Probability Models and Axioms
+
+--
+
+- Conditioning and Bayes' Rule
+
+--
+
+- Exercises
+
+--
+
+*I heavily referenced [MIT Introduction to Probability](https://ocw.mit.edu/resources/res-6-012-introduction-to-probability-spring-2018/part-i-the-fundamentals/) in prepping this, check it out.* 
+
+---
+
+
+## Probability Models and Axioms
+
+--
+
+What is probability? A frequency? A belief? A betting preference?
+
+--
+
+*List columns as an analogy*
+
+--
+
+```{r eval=TRUE, include=TRUE}
+palmerpenguins::penguins %>%
+  nest(data = everything()) %>%
+  transmute(
+    random_body_mass_g =
+      map_dbl(data, ~ sample(.x$body_mass_g, 1))
+  ) %>%
+  kable()
+```
+
+
+**Sample space $\Omega$**
+- Possible outcomes
+- Belief about the likelihood of outcomes
+
+
+
+---
+
+### Probability Models and Axioms cont.
+
+--
+
+What are the axioms of probability?
+
+--
+
+- Nonnegativity: $P(A) \geq 0$
+- Normalization: $P(\Omega) = 1$
+- Finite additivity: If $A\cap B = \theta$, then $P(A\cup B) = P(A) + P(B)$
+
+--
+
+What is relatable pattern from data analysis for normalization?
+
+--
+
+- $n/sum(n)$
+
+--
+
+How about an analogy to help understand additivity?
+
+--
+
+- Say you want to count rows where A occurs, count rows where B occurs, and add the rows to get the total number of rows where either A or B occur in the table. Take care to remove the row count where both occur together. 
+- Appending two data sets using rbind() in R, union in MySQL, etc. Duplication of rows means the intersection did not equal $\theta$.
+
+---
+
+### Probability Models and Axioms cont.
+
+--
+
+Some consequences of these axioms
+
+--
+
+- $P(A)+P(A^c)=1$
+
+--
+
+- If $A \subset B$, then $P(A) \leq P(B)$
+
+--
+
+- $A \cup B = P(A) + P(B) - P(A\cap B)$
+
+--
+
+- $A \cup B \leq P(A) + P(B)$
+
+--
+
+- $P(A \cup B\cup C) = P(A) + P(A^c \cap B) +P(A^c \cap B^c \cap C)$
+
+---
+
+## Conditioning and Bayes rule
+
+What is conditional probability?
+
+--
+
+- $P(A|B)$ The probability of A, given that B occurred.
+- $P(A|B) = \frac{P(A\cap B)}{P(B)}$
+
+--
+
+What is an intuition for this?
+
+--
+
+- This is like grouping by B and calculating the proportion of A. 
+
+--
+
+The conditional probability is the proportion of A within B. How do I get the probability of this intersection overall?
+
+--
+
+- $P(A\cap B) = P(B) P(A|B)$, or $P(A) P(B|A)$
+
+---
+
+### Conditioning and Bayes rule cont.
+
+What is the Total Probability Theorem?
+
+--
+
+- $P(B) = \sum_{i} P(A_i)P(B|A_i)$
+
+--
+
+What is Bayes' rule?
+
+--
+
+- $P(A|B) = \frac{P(A)P(B|A)}{P(B)}$
+
+--
+
+Compared to Conditional Probability
+
+$P(A|B) = \frac{P(A\cap B)}{P(B)}$
+
+-- 
+
+Discussion: What is big picture?
+
+
+---
+
+## Exercises
+
+> A test is developed for a disease that affects one out of every 1000 people. The test is 99% accurate at detecting that someone with the disease tests positive and 99% accurate at detecting that someone without the disease tests negative. You are given the test and learn that you have tested positive. What is the probability that you have the disease? 
+
+--
+
+- TP = test positive
+- S  = sick
+- H  = healthy
+- $P(TP|S) = .99$
+- $P(TP|H) = .01$
+- $P(S) = .001$
+- $P(H) = .999$
+
+---
+
+### Exercises cont.
+
+- We want to know $P(S|TP)$
+- $P(S|TP) = \frac{P(S)P(TP|S)}{P(TP)}$
+- Where $P(TP) = P(S)P(TP|S) + P(H)P(TP|H)$
+
+--
+
+```{r}
+# P(TP|S) 
+P_TP.S <- .99
+# P(TP|H) 
+P_TP.H <- .01
+# P(S)
+P_S <- .001
+# P(H)
+P_H <- .999
+# P(TP)
+(P_TP <- P_S*P_TP.S + P_H*P_TP.H)
+# P(D|TP)
+(P_D.TP <- P_S*P_TP.S/P_TP)
+
+```
+
+
