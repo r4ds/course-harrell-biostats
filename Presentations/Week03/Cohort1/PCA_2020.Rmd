@@ -1,0 +1,117 @@
+---
+title: "Principal Component Analysis"
+author: "Mike Jeziorski"
+date: "17 Sep 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy = "styler")
+```
+
+This vignette draws considerably from [Allison Horst's vignette on using PCA for penguin data](https://github.com/allisonhorst/palmerpenguins/blob/master/vignettes/pca.Rmd).
+
+### The **principle** of **principal** component analysis
+
+Principal component analysis (PCA) applies a mathematical transformation to a dataset with the intention of accounting for as much of the variation in the data as possible using a reduced number of dimensions, or principal components. The first principal component is a dimension that accounts for a maximal portion of the total variation in the dataset, and each successive principal component accounts for a maximal part of the remaining variation while being uncorrelated with (orthogonal to) previous components.
+
+The goal of PCA is to take variables that are likely correlated with each other and transform them into uncorrelated dimensions. To accomplish this, each variable is centered (mean made equivalent to 0) and scaled (variance made equivalent to 1) so that each is weighted the same. Matrix algebra is then applied to identify the principal components. If the dataset has n variables, then n principal components will be generated. However, the benefit of PCA is that, because each component in turn is accounting for a maximal fraction of the remaining variance, the first m components can explain more variation in the data, perhaps much more, than any m of the original variables could.
+
+As an example, we will use the `palmerpenguins` data set.
+
+```{r summary, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+summary(penguins)
+```
+
+There are four continuous variables: `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and `body_mass_g`.  Unsurprisingly, the variables are correlated.
+
+```{r corr, message=FALSE, warning=FALSE}
+# code "borrowed" from Allison Horst
+library(corrr)
+penguins %>%
+      select(body_mass_g, ends_with("_mm")) %>%
+      corrr::correlate() %>%
+      rearrange()
+```
+
+The first step is to remove the two rows with NA values, which will cause problems.
+
+```{r cleanup}
+penguins_clean <- penguins %>%
+      drop_na(body_mass_g, ends_with("_mm"))
+```
+
+We can get a quick idea of how the species are distinguished by size variables.
+
+```{r size_plot, warning=FALSE}
+penguins_clean %>%
+      ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+            geom_point(aes(color = species, shape = species), size = 2) +
+            scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+The dimensions of the bill also distinguish species.
+
+```{r bill_plot, warning=FALSE}
+penguins_clean %>%
+      ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
+            geom_point(aes(color = species, shape = species), size = 2) +
+            scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+Because the variables show correlation, we will apply PCA to reduce the number of variables while still accounting for much of the variation.  I will use the `stats::prcomp()` function.
+
+```{r pca}
+penguin_pca <- penguins_clean %>%
+      select(body_mass_g, ends_with("_mm")) %>%
+      prcomp(center = TRUE, scale = TRUE)
+summary(penguin_pca)
+```
+
+The first principal component explains 68.8% of the variance and the second accounts for an additional 19.3%.  Together the first two principal components cover over 88% of the variation.
+
+The object created by `prcomp()` is a list containing vectors and matrices.  The principal components generated can be extracted by subsetting the x element.  We can then map the original data points against PC1 and PC2.
+
+```{r pca_viz}
+penguin_pca$x %>% 
+      as_tibble() %>%
+      ggplot(aes(x = PC1, y = PC2)) +
+      geom_point(pch = 1, alpha = 0.5)
+```
+
+We can use a scree plot to decide how many principal components are needed to adequately model our data.  The `factoextra` package offers some visualization options.
+
+```{r scree_plot, message=FALSE}
+library(factoextra)
+factoextra::fviz_eig(penguin_pca)
+```
+
+Let's look at how the penguin species are clustered when the principal components are applied.
+
+```{r PCA_plot}
+factoextra::fviz_pca_ind(penguin_pca, geom.ind = "point", pointshape = 21, 
+             pointsize = 2, 
+             fill.ind = penguins_clean$species, 
+             col.ind = "black", 
+             palette = "lancet", 
+             addEllipses = TRUE,
+             label = "var",
+             col.var = "black",
+             repel = TRUE,
+             legend.title = "Penguin species") +
+  ggtitle("2D PCA plot from penguin dataset") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+The relationship among the original variables can be viewed in a biplot.  Variables that are near each other are highly correlated.
+
+```{r}
+fviz_pca_var(penguin_pca,
+             col.var = "contrib",         # Color by contributions to the PC
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE                 # Avoid text overlapping
+             )
+```
+
