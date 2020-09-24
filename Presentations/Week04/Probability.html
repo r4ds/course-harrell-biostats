@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>BBRcourse</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Erick Knackstedt" />
+    <meta name="date" content="2020-09-24" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# BBRcourse
+## Chapter 3.9: Probability
+### Erick Knackstedt
+### <span class="citation">@Eknackstedt</span>
+### 2020-09-24
+
+---
+
+
+
+
+
+
+# Outline
+
+--
+
+- Probability Models and Axioms
+
+--
+
+- Conditioning and Bayes' Rule
+
+--
+
+- Exercises
+
+--
+
+*I heavily referenced [MIT Introduction to Probability](https://ocw.mit.edu/resources/res-6-012-introduction-to-probability-spring-2018/part-i-the-fundamentals/) in prepping this, check it out.* 
+
+---
+
+
+## Probability Models and Axioms
+
+--
+
+What is probability? A frequency? A belief? A betting preference?
+
+--
+
+*List columns as an analogy*
+
+--
+
+
+```r
+palmerpenguins::penguins %&gt;%
+  nest(data = everything()) %&gt;%
+  transmute(
+    random_body_mass_g =
+      map_dbl(data, ~ sample(.x$body_mass_g, 1))
+  ) %&gt;%
+  kable()
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; random_body_mass_g &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4750 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+**Sample space `\(\Omega\)`**
+- Possible outcomes
+- Belief about the likelihood of outcomes
+
+
+
+---
+
+### Probability Models and Axioms cont.
+
+--
+
+What are the axioms of probability?
+
+--
+
+- Nonnegativity: `\(P(A) \geq 0\)`
+- Normalization: `\(P(\Omega) = 1\)`
+- Finite additivity: If `\(A\cap B = \theta\)`, then `\(P(A\cup B) = P(A) + P(B)\)`
+
+--
+
+What is relatable pattern from data analysis for normalization?
+
+--
+
+- `\(n/sum(n)\)`
+
+--
+
+How about an analogy to help understand additivity?
+
+--
+
+- Say you want to count rows where A occurs, count rows where B occurs, and add the rows to get the total number of rows where either A or B occur in the table. Take care to remove the row count where both occur together. 
+- Appending two data sets using rbind() in R, union in MySQL, etc. Duplication of rows means the intersection did not equal `\(\theta\)`.
+
+---
+
+### Probability Models and Axioms cont.
+
+--
+
+Some consequences of these axioms
+
+--
+
+- `\(P(A)+P(A^c)=1\)`
+
+--
+
+- If `\(A \subset B\)`, then `\(P(A) \leq P(B)\)`
+
+--
+
+- `\(A \cup B = P(A) + P(B) - P(A\cap B)\)`
+
+--
+
+- `\(A \cup B \leq P(A) + P(B)\)`
+
+--
+
+- `\(P(A \cup B\cup C) = P(A) + P(A^c \cap B) +P(A^c \cap B^c \cap C)\)`
+
+---
+
+## Conditioning and Bayes rule
+
+What is conditional probability?
+
+--
+
+- `\(P(A|B)\)` The probability of A, given that B occurred.
+- `\(P(A|B) = \frac{P(A\cap B)}{P(B)}\)`
+
+--
+
+What is an intuition for this?
+
+--
+
+- This is like grouping by B and calculating the proportion of A. 
+
+--
+
+The conditional probability is the proportion of A within B. How do I get the probability of this intersection overall?
+
+--
+
+- `\(P(A\cap B) = P(B) P(A|B)\)`, or `\(P(A) P(B|A)\)`
+
+---
+
+### Conditioning and Bayes rule cont.
+
+What is the Total Probability Theorem?
+
+--
+
+- `\(P(B) = \sum_{i} P(A_i)P(B|A_i)\)`
+
+--
+
+What is Bayes' rule?
+
+--
+
+- `\(P(A|B) = \frac{P(A)P(B|A)}{P(B)}\)`
+
+--
+
+Compared to Conditional Probability
+
+`\(P(A|B) = \frac{P(A\cap B)}{P(B)}\)`
+
+-- 
+
+Discussion: What is big picture?
+
+
+---
+
+## Exercises
+
+&gt; A test is developed for a disease that affects one out of every 1000 people. The test is 99% accurate at detecting that someone with the disease tests positive and 99% accurate at detecting that someone without the disease tests negative. You are given the test and learn that you have tested positive. What is the probability that you have the disease? 
+
+--
+
+- TP = test positive
+- S  = sick
+- H  = healthy
+- `\(P(TP|S) = .99\)`
+- `\(P(TP|H) = .01\)`
+- `\(P(S) = .001\)`
+- `\(P(H) = .999\)`
+
+---
+
+### Exercises cont.
+
+- We want to know `\(P(S|TP)\)`
+- `\(P(S|TP) = \frac{P(S)P(TP|S)}{P(TP)}\)`
+- Where `\(P(TP) = P(S)P(TP|S) + P(H)P(TP|H)\)`
+
+--
+
+
+```r
+# P(TP|S) 
+P_TP.S &lt;- .99
+# P(TP|H) 
+P_TP.H &lt;- .01
+# P(S)
+P_S &lt;- .001
+# P(H)
+P_H &lt;- .999
+# P(TP)
+(P_TP &lt;- P_S*P_TP.S + P_H*P_TP.H)
+```
+
+```
+## [1] 0.01098
+```
+
+```r
+# P(D|TP)
+(P_D.TP &lt;- P_S*P_TP.S/P_TP)
+```
+
+```
+## [1] 0.09016393
+```
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+<style>
+.logo {
+  background-image: url(r4ds.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
