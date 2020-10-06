@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Bostatistics for Biomedical Research</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Tony ElHabr" />
+    <meta name="date" content="2020-10-05" />
+    <script src="libs/header-attrs-2.3/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Bostatistics for Biomedical Research
+## Chapter 4: Descriptive Statistics, Distributions, and Graphics
+### Tony ElHabr
+### 2020-10-05
+
+---
+
+
+
+
+
+
+&lt;style&gt;
+hide {
+  display: none;
+}
+.remark-slide-content h1 {
+  font-size: 45px;
+}
+h1 {
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+}
+.remark-slide-content {
+  font-size: 16px
+}
+.remark-code {
+  font-size: 14px;
+}
+code.r {
+  font-size: 14px;
+}
+pre {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.footnote {
+  color: #800020;
+  font-size: 10px;
+}
+.aligncenter {
+  text-align: center;
+}
+&lt;/style&gt;
+
+# Outline
+
+--
+
+- Distributions
+
+--
+
+- Descriptive Statistics
+
+--
+
+- Graphics
+
+---
+
+## Distributions
+
+&lt;!--
+The distribution of a random variable X is a profile of its variability and other tendencies.
+Depending on the type of X, a distribution is characterized by the following.
+--&gt;
+
+--
+
+Simple definition: a profile of a variable
+
+--
+
++ Types of variables: continuous or discrete
+
+--
+
+  + Discrete: binary or categorical (multinomial)
+
+--
+
+    + Categorical: un-ordered or **ordinal**
+--
+
+      + Ordinal: Almost continuous, but assuming an underlying distribution (e.g. Poisson) often leads to poor deductions
+
+--
+
++ Summarization techniques
+
+  + [PDF and CDF](https://evamaerey.github.io/statistics/distributions.html#1)
+
+--
+
+  + [Moments (i.e. mean, variance, etc.)](https://evamaerey.github.io/statistics/covariance_correlation.html#14)
+
+--
+
+  + Quantiles (including median)
+
+--
+
+    + Proportionas fall under this category
+
+
+---
+
+## Distributions Aside
+
+Mean or median?
+
+&lt;!-- ![](img/mean-or-median.png) --&gt;
+
+&lt;img src="img/mean-or-median.png" width="50%" style="display: block; margin: auto;" /&gt;
+---
+
+## Distributions
+
+--
+
+Mean or median?
+
+--
+
++ If there are extreme values -&gt; median
+
+--
+
++ If there are heavy-ties -&gt; mean
+
+--
+
++ If the assumed distribution is "well-behaved" -&gt; mean
+
+---
+
+## Distributions
+
+--
+
+Limitation of Descriptive Statistics
+
++ Mean: outliers
+
++ Median: heavy ties
+
++ Standard deviations and variance: assymetric data
+  
++ Range: outliers
+
++ Coefficient of variation: overly dependent on zero mean
+
+---
+
+## [Graphing!!!](https://clauswilke.com/dataviz/)
+
+Ink:information ratio (not the same as [data-ink ratio](https://infovis-wiki.net/wiki/Data-Ink_Ratio))
+
+![](https://clauswilke.com/dataviz/proportional_ink_files/figure-html/hawaii-income-bars-bad-1.png)
+
+
+## Graphing!!!]
+
+Ink:information ratio
+
+![](https://https://clauswilke.com/dataviz/proportional-ink.html)
+
+**Bars on a linear scale should always start at 0.**
+
+## Fin
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+<style>
+.logo {
+  background-image: url(r4ds.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
