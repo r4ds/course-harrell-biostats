@@ -4,7 +4,7 @@
     <title>Bostatistics for Biomedical Research</title>
     <meta charset="utf-8" />
     <meta name="author" content="Tony ElHabr" />
-    <meta name="date" content="2020-10-05" />
+    <meta name="date" content="2020-10-06" />
     <script src="libs/header-attrs-2.3/header-attrs.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Bostatistics for Biomedical Research
 ## Chapter 4: Descriptive Statistics, Distributions, and Graphics
 ### Tony ElHabr
-### 2020-10-05
+### 2020-10-06
 
 ---
 
@@ -36,9 +36,9 @@ h1 {
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
 }
-.remark-slide-content {
-  font-size: 16px
-}
+//.remark-slide-content {
+//  font-size: 16px
+//}
 .remark-code {
   font-size: 14px;
 }
@@ -87,18 +87,18 @@ Simple definition: a profile of a variable
 
 --
 
-+ Types of variables: continuous or discrete
++ Types of variables: **continuous** or **discrete**
 
 --
 
-  + Discrete: binary or categorical (multinomial)
+  + **Discrete**: binary or **categorical**
 
 --
 
-    + Categorical: un-ordered or **ordinal**
+    + **Categorical**: un-ordered or **ordinal**
 --
 
-      + Ordinal: Almost continuous, but assuming an underlying distribution (e.g. Poisson) often leads to poor deductions
+      + **Ordinal**: Almost continuous, but assuming an underlying distribution (e.g. Poisson) often leads to poor deductions
 
 --
 
@@ -114,25 +114,22 @@ Simple definition: a profile of a variable
 
   + Quantiles (including median)
 
---
 
-    + Proportionas fall under this category
-
-
----
-
-## Distributions Aside
-
-Mean or median?
-
-&lt;!-- ![](img/mean-or-median.png) --&gt;
-
-&lt;img src="img/mean-or-median.png" width="50%" style="display: block; margin: auto;" /&gt;
 ---
 
 ## Distributions
 
 --
+
+Mean or median?
+
+&lt;!-- ![](img/mean-or-median.png) --&gt;
+
+&lt;img src="img/mean-or-median.png" width="30%" style="display: block; margin: auto;" /&gt;
+---
+
+## Distributions
+
 
 Mean or median?
 
@@ -168,20 +165,98 @@ Limitation of Descriptive Statistics
 
 ---
 
-## [Graphing!!!](https://clauswilke.com/dataviz/)
+## [Graphing](https://clauswilke.com/dataviz/)
 
-Ink:information ratio (not the same as [data-ink ratio](https://infovis-wiki.net/wiki/Data-Ink_Ratio))
+Data as position or length
 
-![](https://clauswilke.com/dataviz/proportional_ink_files/figure-html/hawaii-income-bars-bad-1.png)
+![Pie Charts 1](https://clauswilke.com/dataviz/proportional-ink.html#direct-area-visualizations)
+
+![Pie Charts 2](https://clauswilke.com/dataviz/visualizing-proportions.html#side-by-side-bars)
+
+![Radial Bar Charts](https://www.data-to-viz.com/caveat/circular_barplot_accordeon.html)
+
+--
+
++ Human perception is better at judging distances than judging areas
+
+--
+
++ Comparison is difficult
+
+---
+
+## Graphing
+
+Horizontal length &gt; vertical length
+
+![Example](https://clauswilke.com/dataviz/visualizing-amounts.html#bar-plots)
+
+--
+
++ Avoid rotated tick labels
+
+--
+
++ [Usually better if sorted](https://clauswilke.com/dataviz/visualizing_amounts_files/figure-html/boxoffice-horizontal-bad-order-1.png) [(but not always)](https://clauswilke.com/dataviz/visualizing_amounts_files/figure-html/income-by-age-sorted-1.png)
+
+Example 
+
+## Graphing
+
+[Data-ink ratio](https://infovis-wiki.net/wiki/Data-Ink_Ratio)
+
+![Line Chart](http://motioninsocial.com/tufte/#minimal-line-plot)
+
+![Bar Chart](https://www.data-to-viz.com/caveat/declutter.html)
+
+--
+
++ Focus viewer's attention
+
+---
+
+## Graphing
+
+Color
 
 
-## Graphing!!!]
+---
 
-Ink:information ratio
+## Graphing
 
-![](https://https://clauswilke.com/dataviz/proportional-ink.html)
+Angles or slopes = not a great idea
 
-**Bars on a linear scale should always start at 0.**
+---
+
+## Graphing
+
+Volumes = not a great idea
+
+---
+
+## Graphing
+
+Partial effects plots
+
+--
+
+["Generalization"](https://stats.stackexchange.com/questions/371439/partial-effects-plots-vs-partial-dependence-plots-for-random-forests) is a partial dependency plot
+
+![](https://uc-r.github.io/public/images/analytics/ML_interpretation/pdp-1.png)
+
+---
+
+## Graphing
+
+Effect chart
+
+---
+
+## Graphing
+
+Nomograms
+
+---
 
 ## Fin
 

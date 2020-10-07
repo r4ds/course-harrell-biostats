@@ -45,9 +45,9 @@ h1 {
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
 }
-.remark-slide-content {
-  font-size: 16px
-}
+//.remark-slide-content {
+//  font-size: 16px
+//}
 .remark-code {
   font-size: 14px;
 }
@@ -123,14 +123,12 @@ Simple definition: a profile of a variable
 
   + Quantiles (including median)
 
---
-
-    + Proportionas fall under this category
-
 
 ---
 
-## Distributions Aside
+## Distributions
+
+--
 
 Mean or median?
 
@@ -143,7 +141,6 @@ knitr::include_graphics('img/mean-or-median.png')
 
 ## Distributions
 
---
 
 Mean or median?
 
@@ -165,7 +162,7 @@ Mean or median?
 
 --
 
-Limitation of Descriptive Statistics
+Limitations of descriptive statistics
 
 + Mean: outliers
 
@@ -179,52 +176,168 @@ Limitation of Descriptive Statistics
 
 ---
 
-## [Graphing](https://clauswilke.com/dataviz/)
+## Graphing
 
-Data as position or length
+--
+
+1. Data as position or length
+
+2. Perception of angles, slopes, and volumes
+
+--
+
++ **[Pie charts](https://www.data-to-viz.com/caveat/pie.html)**: humans are bad at interpreting angles and [areas](https://www.data-to-viz.com/caveat/radius_or_area.html)
+
++ **[Radial](https://www.data-to-viz.com/caveat/circular_barplot_accordeon.html)** and **[circular](https://www.data-to-viz.com/caveat/circular_bar_yaxis.html)** barplots: see pie charts
+
++ **[Histograms](https://www.data-to-viz.com/caveat/bin_size.html)** and **density plots**: different bin sizes and kernel parameters can lead to different insights
+
++ **[Stacked bar charts](https://www.data-to-viz.com/caveat/stacking.html)**: make comparison difficult
+
++ **[Boxplots](https://www.data-to-viz.com/caveat/boxplot.html)**: can hide information
 
 ---
 
 ## Graphing
 
-Horizontal length > vertical length
+--
+
+3. **[Horizontal length > vertical length(https://www.data-to-viz.com/caveat/hard_label.html)**: horizontal labels are easier to read
+
+  + [Usually better if sorted](https://www.data-to-viz.com/caveat/order_data.html) [(but not always)](https://clauswilke.com/dataviz/visualizing_amounts_files/figure-html/income-by-age-sorted-1.png)
 
 
-## Graphing
+--
 
-[Data-ink ratio](https://infovis-wiki.net/wiki/Data-Ink_Ratio))
+4. **[Data-ink ratio](https://www.data-to-viz.com/caveat/declutter.html)**: focus viewer's attention
 
-![](https://clauswilke.com/dataviz/proportional_ink_files/figure-html/hawaii-income-bars-bad-1.png)
+--
 
----
-
-## Graphing!!!]
-
-Data-ink ratio
-
-![](https://https://clauswilke.com/dataviz/proportional-ink.html)
+5. **[Color](https://www.data-to-viz.com/caveat/color_com_nothing.html)**: should be meaningufl
 
 ---
 
 ## Graphing
 
-Color
+--
 
+"Special" types of plots for models
+
+--
+
++ **Partial effects plots**
+
+  + Y ~ one X at a time
+  
+  + Great for showing effect of continuous predictors
+
+--
+
++ **Effects chartss**
+
+  + Difference in means, odds ratio, etc.
+  
+  + Not great with continuous predictors
+  
+  + IQR typically used
+
+--
+
++ **Nomograms**
+
+  + Useful if number of interactions are releatively small
 
 ---
 
 ## Graphing
 
-Angles or slopes = not a great idea
+Partial effects
+
+```{r echo=F, include=T, eval=T, out.width='50%', fig.align='center'}
+knitr::include_graphics('img/partial-effects-example.jpg')
+```
 
 ---
 
 ## Graphing
 
-Volumes = not a great idea
+Partial effects
+
+--
+
+["Generalization"](https://stats.stackexchange.com/questions/371439/partial-effects-plots-vs-partial-dependence-plots-for-random-forests) is a partial dependency plot
+
+![](https://uc-r.github.io/public/images/analytics/ML_interpretation/pdp-1.png)
+
+```{r echo=F, include=T, eval=T, out.width='80%', fig.align='center'}
+knitr::include_graphics('img/pdp-example.jpg')
+```
+
+---
+
+## Graphing
+
+Effects
 
 
+```{r echo=F, include=T, eval=T, out.width='50%', fig.align='center'}
+knitr::include_graphics('img/effects-example.jpg')
+```
 
+---
+
+## Graphing
+
+Nomogram
+
+
+```{r echo=F, include=T, eval=T, out.width='50%', fig.align='center'}
+knitr::include_graphics('img/nomogram-example.jpg')
+```
+
+---
+
+## Tables
+
+--
+
+Just read [Tom Mock's summary of Jon Schwabish's principles](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)
+
+```{r echo=F, include=T, eval=T, out.width='50%', fig.align='center'}
+knitr::include_graphics('img/tables-v-charts.jpg')
+```
+
+---
+
+## Tables
+
+--
+
+How to display different types of response variables
+
+--
+
++ **Binary**
+
+  + Show proportions
+  
+  + Only need to show 1 of the 2 proportions
+  
+  + Don't convert to percentages
+
+--
+
++ **Continuous**
+
+  + 3 quartiles + formatting to emphasize middle quartile
+  
+  + Include mean, median, etc.
+  
+--
+
+Show confidence intervals where relevant
+
+---
 
 ## Fin
 
