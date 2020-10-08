@@ -19,13 +19,12 @@ Other useful guides: [Repo Maintainers Guide](.guides/repo-maintainers.md)
 - 2020-09-03: Chapter 2 - Algebra Review - [Adam Sonty]()
 - 2020-09-10: Review - Linear Algebra Review - Asmae Toumi
 - 2020-09-17: Special Topics - Principal Component Analysis - Mike Jeziorski
-- 2020-09-24: Review - Probability Review - Pavitra Chakravarty
+- 2020-09-24: Review - Probability Review - Erick 
+- 2020-10-01: Chapter 3 - General Overview of Biostatistics - Asmae Toumi
+- 2020-10-08: Chapter 4 - Descriptive Statistics, Distributions, and Graphics - Tony El Habr
 
 <details>
   <summary> Future Meetings </summary>
-
-- 2020-10-01: Chapter 3 - General Overview of Biostatistics 
-- 2020-10-08: Chapter 4 - Descriptive Statistics, Distributions, and Graphics
 - 2020-10-15: Chapter 5 - Statistical Inference
 - 2020-10-22: Chapter 6 - Comparing Two Proportions
 - 2020-10-29: Chapter 7 - Intro to the Rrms Package
@@ -43,3 +42,8 @@ Introduction/Chapter 2 Algebra Review:
 
 - Adam Sonty: VIDEO | SLIDES
 - Asmae Toumi: VIDEO | SLIDES
+- Mike Jeziorksi: VIDEO | SLIDES
+- Erick: VIDEO | SLIDES
+- Asmae Toumi:  VIDEO | SLIDES
+- Tony El Habr: VIDEO | SLIDES
+
