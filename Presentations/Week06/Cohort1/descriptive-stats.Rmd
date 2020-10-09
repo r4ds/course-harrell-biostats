@@ -1,14 +1,13 @@
 ---
-title: 'Bostatistics for Biomedical Research'
+title: 'Biostatistics for Biomedical Research'
 subtitle: 'Chapter 4: Descriptive Statistics, Distributions, and Graphics'
-author: 'Tony ElHabr'
-date: ' `r Sys.Date()` '
+author: '@Tony ElHabr'
+date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
     lib_dir: libs
     css: ['xaringan-themer.css']
-    includes:
-      after_body: insert-logo.html
+    nature:
       countIncrementalSlides: false
 ---
 
@@ -69,17 +68,13 @@ pre {
 
 # Outline
 
---
-
 - Distributions
-
---
 
 - Descriptive Statistics
 
---
-
 - Graphics
+
+- Tables
 
 ---
 
@@ -102,12 +97,9 @@ Simple definition: a profile of a variable
 
   + **Discrete**: binary or **categorical**
 
---
-
     + **Categorical**: un-ordered or **ordinal**
---
 
-      + **Ordinal**: Almost continuous, but assuming an underlying distribution (e.g. Poisson) often leads to poor deductions
+      + **Ordinal**: Almost like continuous, but assuming an underlying distribution (e.g. Poisson) often leads to poor deductions
 
 --
 
@@ -115,11 +107,7 @@ Simple definition: a profile of a variable
 
   + [PDF and CDF](https://evamaerey.github.io/statistics/distributions.html#1)
 
---
-
   + [Moments (i.e. mean, variance, etc.)](https://evamaerey.github.io/statistics/covariance_correlation.html#14)
-
---
 
   + Quantiles (including median)
 
@@ -146,13 +134,9 @@ Mean or median?
 
 --
 
-+ If there are extreme values -> median
++ If extreme values -> median
 
---
-
-+ If there are heavy-ties -> mean
-
---
++ If heavy-ties -> mean
 
 + If the assumed distribution is "well-behaved" -> mean
 
@@ -168,7 +152,7 @@ Limitations of descriptive statistics
 
 + Median: heavy ties
 
-+ Standard deviations and variance: assymetric data
++ Standard deviations and variance: asymmetric data
   
 + Range: outliers
 
@@ -180,21 +164,21 @@ Limitations of descriptive statistics
 
 --
 
-1. Data as position or length
++ Data as position or length
 
-2. Perception of angles, slopes, and volumes
++ Perception of angles, slopes, and volumes
 
 --
 
-+ **[Pie charts](https://www.data-to-viz.com/caveat/pie.html)**: humans are bad at interpreting angles and [areas](https://www.data-to-viz.com/caveat/radius_or_area.html)
-
-+ **[Radial](https://www.data-to-viz.com/caveat/circular_barplot_accordeon.html)** and **[circular](https://www.data-to-viz.com/caveat/circular_bar_yaxis.html)** barplots: see pie charts
-
-+ **[Histograms](https://www.data-to-viz.com/caveat/bin_size.html)** and **density plots**: different bin sizes and kernel parameters can lead to different insights
-
-+ **[Stacked bar charts](https://www.data-to-viz.com/caveat/stacking.html)**: make comparison difficult
-
-+ **[Boxplots](https://www.data-to-viz.com/caveat/boxplot.html)**: can hide information
+  + **[Pie charts](https://www.data-to-viz.com/caveat/pie.html)**: humans are bad at interpreting angles and [areas](https://www.data-to-viz.com/caveat/radius_or_area.html)
+  
+  + **[Radial](https://www.data-to-viz.com/caveat/circular_barplot_accordeon.html)** and **[circular](https://www.data-to-viz.com/caveat/circular_bar_yaxis.html)** barplots: see pie charts
+  
+  + **[Histograms](https://www.data-to-viz.com/caveat/bin_size.html)** and **density plots**: different bin sizes and kernel parameters can lead to different insights
+  
+  + **[Stacked bar charts](https://www.data-to-viz.com/caveat/stacking.html)**: make comparison difficult
+  
+  + **[Boxplots](https://www.data-to-viz.com/caveat/boxplot.html)**: can hide information
 
 ---
 
@@ -202,18 +186,18 @@ Limitations of descriptive statistics
 
 --
 
-3. **[Horizontal length > vertical length(https://www.data-to-viz.com/caveat/hard_label.html)**: horizontal labels are easier to read
++ **[Horizontal length > vertical length](https://www.data-to-viz.com/caveat/hard_label.html)**: horizontal labels are easier to read
 
   + [Usually better if sorted](https://www.data-to-viz.com/caveat/order_data.html) [(but not always)](https://clauswilke.com/dataviz/visualizing_amounts_files/figure-html/income-by-age-sorted-1.png)
 
 
 --
 
-4. **[Data-ink ratio](https://www.data-to-viz.com/caveat/declutter.html)**: focus viewer's attention
++ **[Data-ink ratio](https://www.data-to-viz.com/caveat/declutter.html)**: focus viewer's attention
 
 --
 
-5. **[Color](https://www.data-to-viz.com/caveat/color_com_nothing.html)**: should be meaningufl
++ **[Color](https://www.data-to-viz.com/caveat/color_com_nothing.html)**: should be meaningful
 
 ---
 
@@ -233,7 +217,7 @@ Limitations of descriptive statistics
 
 --
 
-+ **Effects chartss**
++ **Effects charts**
 
   + Difference in means, odds ratio, etc.
   
@@ -245,7 +229,7 @@ Limitations of descriptive statistics
 
 + **Nomograms**
 
-  + Useful if number of interactions are releatively small
+  + Useful if number of interactions are relatively small
 
 ---
 
@@ -253,7 +237,7 @@ Limitations of descriptive statistics
 
 Partial effects
 
-```{r echo=F, include=T, eval=T, out.width='50%', fig.align='center'}
+```{r echo=F, include=T, eval=T, out.width='70%', fig.align='center'}
 knitr::include_graphics('img/partial-effects-example.jpg')
 ```
 
@@ -267,10 +251,8 @@ Partial effects
 
 ["Generalization"](https://stats.stackexchange.com/questions/371439/partial-effects-plots-vs-partial-dependence-plots-for-random-forests) is a partial dependency plot
 
-![](https://uc-r.github.io/public/images/analytics/ML_interpretation/pdp-1.png)
-
-```{r echo=F, include=T, eval=T, out.width='80%', fig.align='center'}
-knitr::include_graphics('img/pdp-example.jpg')
+```{r echo=F, include=T, eval=T, out.width='60%', fig.align='center'}
+knitr::include_graphics('img/pdp-example.png')
 ```
 
 ---
@@ -279,8 +261,10 @@ knitr::include_graphics('img/pdp-example.jpg')
 
 Effects
 
+<!--Like an extension of partial effects plots, working on 2 variables instead of just 1.-->
 
-```{r echo=F, include=T, eval=T, out.width='50%', fig.align='center'}
+
+```{r echo=F, include=T, eval=T, out.width='70%', fig.align='center'}
 knitr::include_graphics('img/effects-example.jpg')
 ```
 
@@ -291,7 +275,7 @@ knitr::include_graphics('img/effects-example.jpg')
 Nomogram
 
 
-```{r echo=F, include=T, eval=T, out.width='50%', fig.align='center'}
+```{r echo=F, include=T, eval=T, out.width='60%', fig.align='center'}
 knitr::include_graphics('img/nomogram-example.jpg')
 ```
 
@@ -301,9 +285,9 @@ knitr::include_graphics('img/nomogram-example.jpg')
 
 --
 
-Just read [Tom Mock's summary of Jon Schwabish's principles](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)
+[Jon Schwabish's principles](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)
 
-```{r echo=F, include=T, eval=T, out.width='50%', fig.align='center'}
+```{r echo=F, include=T, eval=T, out.width='80%', fig.align='center'}
 knitr::include_graphics('img/tables-v-charts.jpg')
 ```
 
@@ -313,7 +297,7 @@ knitr::include_graphics('img/tables-v-charts.jpg')
 
 --
 
-How to display different types of response variables
+Recommendations for response variables
 
 --
 
@@ -329,16 +313,24 @@ How to display different types of response variables
 
 + **Continuous**
 
-  + 3 quartiles + formatting to emphasize middle quartile
+  + 3 quantiles + formatting to emphasize middle quantile
   
   + Include mean, median, etc.
   
 --
 
+<br />
+
 Show confidence intervals where relevant
 
 ---
 
-## Fin
+## References
 
+Visualizations
 
++ https://www.data-to-viz.com/
+
++ https://clauswilke.com/dataviz/
+
++ [Tom Mock's summary of Jon Schwabish's principles](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Bostatistics for Biomedical Research</title>
+    <title>Biostatistics for Biomedical Research</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Tony ElHabr" />
-    <meta name="date" content="2020-10-06" />
+    <meta name="author" content="@Tony ElHabr" />
+    <meta name="date" content="2020-10-08" />
     <script src="libs/header-attrs-2.3/header-attrs.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -12,10 +12,10 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Bostatistics for Biomedical Research
+# Biostatistics for Biomedical Research
 ## Chapter 4: Descriptive Statistics, Distributions, and Graphics
-### Tony ElHabr
-### 2020-10-06
+### <span class="citation">@Tony</span> ElHabr
+### 2020-10-08
 
 ---
 
@@ -60,17 +60,13 @@ pre {
 
 # Outline
 
---
-
 - Distributions
-
---
 
 - Descriptive Statistics
 
---
-
 - Graphics
+
+- Tables
 
 ---
 
@@ -93,12 +89,9 @@ Simple definition: a profile of a variable
 
   + **Discrete**: binary or **categorical**
 
---
-
     + **Categorical**: un-ordered or **ordinal**
---
 
-      + **Ordinal**: Almost continuous, but assuming an underlying distribution (e.g. Poisson) often leads to poor deductions
+      + **Ordinal**: Almost like continuous, but assuming an underlying distribution (e.g. Poisson) often leads to poor deductions
 
 --
 
@@ -106,11 +99,7 @@ Simple definition: a profile of a variable
 
   + [PDF and CDF](https://evamaerey.github.io/statistics/distributions.html#1)
 
---
-
   + [Moments (i.e. mean, variance, etc.)](https://evamaerey.github.io/statistics/covariance_correlation.html#14)
-
---
 
   + Quantiles (including median)
 
@@ -135,13 +124,9 @@ Mean or median?
 
 --
 
-+ If there are extreme values -&gt; median
++ If extreme values -&gt; median
 
---
-
-+ If there are heavy-ties -&gt; mean
-
---
++ If heavy-ties -&gt; mean
 
 + If the assumed distribution is "well-behaved" -&gt; mean
 
@@ -151,13 +136,13 @@ Mean or median?
 
 --
 
-Limitation of Descriptive Statistics
+Limitations of descriptive statistics
 
 + Mean: outliers
 
 + Median: heavy ties
 
-+ Standard deviations and variance: assymetric data
++ Standard deviations and variance: asymmetric data
   
 + Range: outliers
 
@@ -165,106 +150,176 @@ Limitation of Descriptive Statistics
 
 ---
 
-## [Graphing](https://clauswilke.com/dataviz/)
-
-Data as position or length
-
-![Pie Charts 1](https://clauswilke.com/dataviz/proportional-ink.html#direct-area-visualizations)
-
-![Pie Charts 2](https://clauswilke.com/dataviz/visualizing-proportions.html#side-by-side-bars)
-
-![Radial Bar Charts](https://www.data-to-viz.com/caveat/circular_barplot_accordeon.html)
+## Graphing
 
 --
 
-+ Human perception is better at judging distances than judging areas
++ Data as position or length
+
++ Perception of angles, slopes, and volumes
 
 --
 
-+ Comparison is difficult
+  + **[Pie charts](https://www.data-to-viz.com/caveat/pie.html)**: humans are bad at interpreting angles and [areas](https://www.data-to-viz.com/caveat/radius_or_area.html)
+  
+  + **[Radial](https://www.data-to-viz.com/caveat/circular_barplot_accordeon.html)** and **[circular](https://www.data-to-viz.com/caveat/circular_bar_yaxis.html)** barplots: see pie charts
+  
+  + **[Histograms](https://www.data-to-viz.com/caveat/bin_size.html)** and **density plots**: different bin sizes and kernel parameters can lead to different insights
+  
+  + **[Stacked bar charts](https://www.data-to-viz.com/caveat/stacking.html)**: make comparison difficult
+  
+  + **[Boxplots](https://www.data-to-viz.com/caveat/boxplot.html)**: can hide information
 
 ---
 
 ## Graphing
 
-Horizontal length &gt; vertical length
+--
 
-![Example](https://clauswilke.com/dataviz/visualizing-amounts.html#bar-plots)
++ **[Horizontal length &gt; vertical length](https://www.data-to-viz.com/caveat/hard_label.html)**: horizontal labels are easier to read
+
+  + [Usually better if sorted](https://www.data-to-viz.com/caveat/order_data.html) [(but not always)](https://clauswilke.com/dataviz/visualizing_amounts_files/figure-html/income-by-age-sorted-1.png)
+
 
 --
 
-+ Avoid rotated tick labels
++ **[Data-ink ratio](https://www.data-to-viz.com/caveat/declutter.html)**: focus viewer's attention
 
 --
 
-+ [Usually better if sorted](https://clauswilke.com/dataviz/visualizing_amounts_files/figure-html/boxoffice-horizontal-bad-order-1.png) [(but not always)](https://clauswilke.com/dataviz/visualizing_amounts_files/figure-html/income-by-age-sorted-1.png)
++ **[Color](https://www.data-to-viz.com/caveat/color_com_nothing.html)**: should be meaningful
 
-Example 
+---
 
 ## Graphing
-
-[Data-ink ratio](https://infovis-wiki.net/wiki/Data-Ink_Ratio)
-
-![Line Chart](http://motioninsocial.com/tufte/#minimal-line-plot)
-
-![Bar Chart](https://www.data-to-viz.com/caveat/declutter.html)
 
 --
 
-+ Focus viewer's attention
+"Special" types of plots for models
+
+--
+
++ **Partial effects plots**
+
+  + Y ~ one X at a time
+  
+  + Great for showing effect of continuous predictors
+
+--
+
++ **Effects charts**
+
+  + Difference in means, odds ratio, etc.
+  
+  + Not great with continuous predictors
+  
+  + IQR typically used
+
+--
+
++ **Nomograms**
+
+  + Useful if number of interactions are relatively small
 
 ---
 
 ## Graphing
 
-Color
+Partial effects
 
-
----
-
-## Graphing
-
-Angles or slopes = not a great idea
+&lt;img src="img/partial-effects-example.jpg" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ## Graphing
 
-Volumes = not a great idea
-
----
-
-## Graphing
-
-Partial effects plots
+Partial effects
 
 --
 
 ["Generalization"](https://stats.stackexchange.com/questions/371439/partial-effects-plots-vs-partial-dependence-plots-for-random-forests) is a partial dependency plot
 
-![](https://uc-r.github.io/public/images/analytics/ML_interpretation/pdp-1.png)
+&lt;img src="img/pdp-example.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ## Graphing
 
-Effect chart
+Effects
+
+&lt;!--Like an extension of partial effects plots, working on 2 variables instead of just 1.--&gt;
+
+
+&lt;img src="img/effects-example.jpg" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ## Graphing
 
-Nomograms
+Nomogram
+
+
+&lt;img src="img/nomogram-example.jpg" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-## Fin
+## Tables
 
+--
 
+[Jon Schwabish's principles](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)
+
+&lt;img src="img/tables-v-charts.jpg" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Tables
+
+--
+
+Recommendations for response variables
+
+--
+
++ **Binary**
+
+  + Show proportions
+  
+  + Only need to show 1 of the 2 proportions
+  
+  + Don't convert to percentages
+
+--
+
++ **Continuous**
+
+  + 3 quantiles + formatting to emphasize middle quantile
+  
+  + Include mean, median, etc.
+  
+--
+
+&lt;br /&gt;
+
+Show confidence intervals where relevant
+
+---
+
+## References
+
+Visualizations
+
++ https://www.data-to-viz.com/
+
++ https://clauswilke.com/dataviz/
+
++ [Tom Mock's summary of Jon Schwabish's principles](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script>var slideshow = remark.create();
+<script>var slideshow = remark.create({
+"countIncrementalSlides": false
+});
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
@@ -330,33 +385,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
   }
 })();</script>
-<style>
-.logo {
-  background-image: url(r4ds.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  width: 110px;
-  height: 128px;
-  z-index: 0;
-}
-</style>
-
-<script>
-document
-  .querySelectorAll(
-    '.remark-slide-content' +
-    ':not(.title-slide)' +
-    // add additional classes to exclude here, e.g.
-    // ':not(.inverse)' +
-    ':not(.hide-logo)'
-  )
-  .forEach(el => {
-    el.innerHTML += '<div class="logo"></div>';
-  });
-</script>
 
 <script>
 slideshow._releaseMath = function(el) {
