@@ -16,22 +16,16 @@ Other useful guides: [Repo Maintainers Guide](.guides/repo-maintainers.md)
 
 *Cohort 1 - Thursdays, 8:30 PM ET - facilitated by Asmae Toumi*
 
-- 2020-09-03: Chapter 2 - Algebra Review - [Adam Sonty]()
-- 2020-09-10: Review - Linear Algebra Review - Asmae Toumi
-- 2020-09-17: Special Topics - Principal Component Analysis - Mike Jeziorski
-- 2020-09-24: Review - Probability Review - Pavitra Chakravarty
+- 2020-10-22: Chapter 5 - Statistical Inference
+- 2020-10-29: Chapter 6 - Comparing Two Proportions
+- 2020-11-05: Chapter 7 - Intro to the Rrms Package
 
 <details>
   <summary> Future Meetings </summary>
 
-- 2020-10-01: Chapter 3 - General Overview of Biostatistics 
-- 2020-10-08: Chapter 4 - Descriptive Statistics, Distributions, and Graphics
-- 2020-10-15: Chapter 5 - Statistical Inference
-- 2020-10-22: Chapter 6 - Comparing Two Proportions
-- 2020-10-29: Chapter 7 - Intro to the Rrms Package
-- 2020-11-05: Chapter 8 - Nonparametric Statistical Tests
-- 2020-11-12: Chapter 9 - Correlation
-- 2020-11-19: Chapter 10 - Introduction to the R rms Package: The Linear Model
+- 2020-11-12: Chapter 8 - Nonparametric Statistical Tests
+- 2020-11-19: Chapter 9 - Correlation
+- 2020-12-03: Chapter 10 - Introduction to the R rms Package: The Linear Model
 
 </details>
 <hr>
@@ -41,5 +35,24 @@ Other useful guides: [Repo Maintainers Guide](.guides/repo-maintainers.md)
 
 Introduction/Chapter 2 Algebra Review:
 
-- Adam Sonty: VIDEO | SLIDES
-- Asmae Toumi: VIDEO | SLIDES
+- Adam Sonty: [video](https://youtu.be/uhDGMAdwjFA) | SLIDES
+
+Linear Algebra Review:
+
+- Asmae Toumi: [video](https://youtu.be/94Gq1Uk3-ts) | SLIDES
+
+Special Topics: Principal Component Analysis:
+
+- Mike Jeziorski: [video](https://youtu.be/CLbtDIaxNYw) | SLIDES
+
+Probability Review:
+
+- Erick Knackstedt: [video](https://youtu.be/khbMTzMXqM8) | SLIDES
+
+Chapter 3: General Overview of Biostatistics
+
+- Asmae Toumi: [video](https://youtu.be/HYntZO_1ggI) | SLIDES
+
+Chapter 4: Descriptive Statistics, Distributions, and Graphics
+
+- Tony El Habr: [video](https://youtu.be/dai_HfddzwY) | SLIDES
