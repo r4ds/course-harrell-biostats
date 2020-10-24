@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Biostatistics for Biomedical Research</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="@Tony ElHabr" />
+    <meta name="date" content="2020-10-08" />
+    <script src="libs/header-attrs-2.3/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Biostatistics for Biomedical Research
+## Chapter 4: Descriptive Statistics, Distributions, and Graphics
+### <span class="citation">@Tony</span> ElHabr
+### 2020-10-08
+
+---
+
+
+
+
+
+
+&lt;style&gt;
+hide {
+  display: none;
+}
+.remark-slide-content h1 {
+  font-size: 45px;
+}
+h1 {
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+}
+//.remark-slide-content {
+//  font-size: 16px
+//}
+.remark-code {
+  font-size: 14px;
+}
+code.r {
+  font-size: 14px;
+}
+pre {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.footnote {
+  color: #800020;
+  font-size: 10px;
+}
+.aligncenter {
+  text-align: center;
+}
+&lt;/style&gt;
+
+# Outline
+
+- Distributions
+
+- Descriptive Statistics
+
+- Graphics
+
+- Tables
+
+---
+
+## Distributions
+
+&lt;!--
+The distribution of a random variable X is a profile of its variability and other tendencies.
+Depending on the type of X, a distribution is characterized by the following.
+--&gt;
+
+--
+
+Simple definition: a profile of a variable
+
+--
+
++ Types of variables: **continuous** or **discrete**
+
+--
+
+  + **Discrete**: binary or **categorical**
+
+    + **Categorical**: un-ordered or **ordinal**
+
+      + **Ordinal**: Almost like continuous, but assuming an underlying distribution (e.g. Poisson) often leads to poor deductions
+
+--
+
++ Summarization techniques
+
+  + [PDF and CDF](https://evamaerey.github.io/statistics/distributions.html#1)
+
+  + [Moments (i.e. mean, variance, etc.)](https://evamaerey.github.io/statistics/covariance_correlation.html#14)
+
+  + Quantiles (including median)
+
+
+---
+
+## Distributions
+
+--
+
+Mean or median?
+
+&lt;!-- ![](img/mean-or-median.png) --&gt;
+
+&lt;img src="img/mean-or-median.png" width="30%" style="display: block; margin: auto;" /&gt;
+---
+
+## Distributions
+
+
+Mean or median?
+
+--
+
++ If extreme values -&gt; median
+
++ If heavy-ties -&gt; mean
+
++ If the assumed distribution is "well-behaved" -&gt; mean
+
+---
+
+## Distributions
+
+--
+
+Limitations of descriptive statistics
+
++ Mean: outliers
+
++ Median: heavy ties
+
++ Standard deviations and variance: asymmetric data
+  
++ Range: outliers
+
++ Coefficient of variation: overly dependent on zero mean
+
+---
+
+## Graphing
+
+--
+
++ Data as position or length
+
++ Perception of angles, slopes, and volumes
+
+--
+
+  + **[Pie charts](https://www.data-to-viz.com/caveat/pie.html)**: humans are bad at interpreting angles and [areas](https://www.data-to-viz.com/caveat/radius_or_area.html)
+  
+  + **[Radial](https://www.data-to-viz.com/caveat/circular_barplot_accordeon.html)** and **[circular](https://www.data-to-viz.com/caveat/circular_bar_yaxis.html)** barplots: see pie charts
+  
+  + **[Histograms](https://www.data-to-viz.com/caveat/bin_size.html)** and **density plots**: different bin sizes and kernel parameters can lead to different insights
+  
+  + **[Stacked bar charts](https://www.data-to-viz.com/caveat/stacking.html)**: make comparison difficult
+  
+  + **[Boxplots](https://www.data-to-viz.com/caveat/boxplot.html)**: can hide information
+
+---
+
+## Graphing
+
+--
+
++ **[Horizontal length &gt; vertical length](https://www.data-to-viz.com/caveat/hard_label.html)**: horizontal labels are easier to read
+
+  + [Usually better if sorted](https://www.data-to-viz.com/caveat/order_data.html) [(but not always)](https://clauswilke.com/dataviz/visualizing_amounts_files/figure-html/income-by-age-sorted-1.png)
+
+
+--
+
++ **[Data-ink ratio](https://www.data-to-viz.com/caveat/declutter.html)**: focus viewer's attention
+
+--
+
++ **[Color](https://www.data-to-viz.com/caveat/color_com_nothing.html)**: should be meaningful
+
+---
+
+## Graphing
+
+--
+
+"Special" types of plots for models
+
+--
+
++ **Partial effects plots**
+
+  + Y ~ one X at a time
+  
+  + Great for showing effect of continuous predictors
+
+--
+
++ **Effects charts**
+
+  + Difference in means, odds ratio, etc.
+  
+  + Not great with continuous predictors
+  
+  + IQR typically used
+
+--
+
++ **Nomograms**
+
+  + Useful if number of interactions are relatively small
+
+---
+
+## Graphing
+
+Partial effects
+
+&lt;img src="img/partial-effects-example.jpg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Graphing
+
+Partial effects
+
+--
+
+["Generalization"](https://stats.stackexchange.com/questions/371439/partial-effects-plots-vs-partial-dependence-plots-for-random-forests) is a partial dependency plot
+
+&lt;img src="img/pdp-example.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Graphing
+
+Effects
+
+&lt;!--Like an extension of partial effects plots, working on 2 variables instead of just 1.--&gt;
+
+
+&lt;img src="img/effects-example.jpg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Graphing
+
+Nomogram
+
+
+&lt;img src="img/nomogram-example.jpg" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Tables
+
+--
+
+[Jon Schwabish's principles](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)
+
+&lt;img src="img/tables-v-charts.jpg" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Tables
+
+--
+
+Recommendations for response variables
+
+--
+
++ **Binary**
+
+  + Show proportions
+  
+  + Only need to show 1 of the 2 proportions
+  
+  + Don't convert to percentages
+
+--
+
++ **Continuous**
+
+  + 3 quantiles + formatting to emphasize middle quantile
+  
+  + Include mean, median, etc.
+  
+--
+
+&lt;br /&gt;
+
+Show confidence intervals where relevant
+
+---
+
+## References
+
+Visualizations
+
++ https://www.data-to-viz.com/
+
++ https://clauswilke.com/dataviz/
+
++ [Tom Mock's summary of Jon Schwabish's principles](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
